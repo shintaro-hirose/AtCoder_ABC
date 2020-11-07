@@ -1,0 +1,9 @@
+# vscode
+.vscode/
+
+# compiler
+test.dSYM/
+
+# test
+test/
+test
