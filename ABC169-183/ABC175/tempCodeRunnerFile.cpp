@@ -1,0 +1,2 @@
+ni];
+            while(next != 
