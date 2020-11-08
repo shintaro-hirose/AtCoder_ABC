@@ -7,3 +7,6 @@ test.dSYM/
 # test
 test/
 test
+
+# DS_Store
+.DS_Store
