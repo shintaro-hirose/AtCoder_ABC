@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+typedef unsigned long long ull;
+typedef pair<ll, ll> l_l;
+typedef pair<int, int> i_i;
+typedef vector<int> vi;
+typedef vector<vi> vvi;
+typedef vector<ll> vl;
+typedef vector<vl> vvl;
+typedef vector<string> vs;
+typedef vector<vs> vvs;
+typedef vector<bool> vb;
+typedef vector<vb> vvb;
+#define rep(i, n) for (int i = 0; i < (int)(n); i++)
+#define EPS (1e-7)
+#define INF (1e9+10)
+#define PI (acos(-1))
+const ll mod = 1000000007;
+
+int d(ll n){
+    int a=1;
+    while(n / 10 > 0){
+        a++;
+        n /= 10;
+    }
+    return a;
+}
+
+int main() {
+    ll N; cin >> N;
+    
+    int ans = 0;
+    for(ll i=1; i < 1000000; i++){
+        ll x = i * pow(10, d(i)) + i;
+        if(x <= N)ans++;
+        else break;
+    }
+    cout << ans << endl;
+    return 0;
+}
