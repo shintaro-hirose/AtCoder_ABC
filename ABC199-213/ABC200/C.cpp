@@ -21,16 +21,20 @@ const ll mod = 1000000007;
 int main() {
     int N;
     cin >> N;
-    vi As(N), Bs(N);
-    rep(i, N) cin >> As[i] >> Bs[i];
+    int cnt[210];
+    memset(cnt, 0, sizeof(cnt));
 
-    int ans = INF;
-    rep(i, N) rep(j, N) {
-        if(i == j)
-            ans = min(ans, As[i] + Bs[j]);
-        else
-            ans = min(ans, max(As[i], Bs[j]));
+    rep(i, N) {
+        int A;
+        cin >> A;
+        cnt[A % 200]++;
+    }
+    ll ans = 0;
+    rep(i, 200) {
+        ll n = cnt[i];
+        ans += n * (n - 1) / 2;
     }
     cout << ans << endl;
+
     return 0;
 }

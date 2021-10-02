@@ -19,18 +19,30 @@ typedef vector<vb> vvb;
 const ll mod = 1000000007;
 
 int main() {
-    int N;
-    cin >> N;
-    vi As(N), Bs(N);
-    rep(i, N) cin >> As[i] >> Bs[i];
-
-    int ans = INF;
-    rep(i, N) rep(j, N) {
-        if(i == j)
-            ans = min(ans, As[i] + Bs[j]);
-        else
-            ans = min(ans, max(As[i], Bs[j]));
+    int N, Q;
+    string S;
+    cin >> N >> S >> Q;
+    int tflag = false;
+    rep(i, Q) {
+        int t, a, b;
+        cin >> t >> a >> b;
+        a--;
+        b--;
+        if(tflag) {
+            a = (a + N) % (2 * N);
+            b = (b + N) % (2 * N);
+        }
+        if(t == 1) {
+            char temp = S[a];
+            S[a] = S[b];
+            S[b] = temp;
+        } else {
+            tflag = !tflag;
+        }
     }
-    cout << ans << endl;
+    if(tflag) {
+        S = S.substr(N) + S.substr(0, N);
+    }
+    cout << S << endl;
     return 0;
 }

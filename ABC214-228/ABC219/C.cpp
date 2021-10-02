@@ -19,18 +19,19 @@ typedef vector<vb> vvb;
 const ll mod = 1000000007;
 
 int main() {
+    string X;
     int N;
-    cin >> N;
-    vi As(N), Bs(N);
-    rep(i, N) cin >> As[i] >> Bs[i];
-
-    int ans = INF;
-    rep(i, N) rep(j, N) {
-        if(i == j)
-            ans = min(ans, As[i] + Bs[j]);
-        else
-            ans = min(ans, max(As[i], Bs[j]));
+    cin >> X >> N;
+    vector<pair<string,string>> S(N);
+    int D[26];
+    rep(i, 26) { D[X[i] - 'a'] = i; }
+    rep(i, N) {
+        string s;
+        cin >> s;
+        string t = s;
+        rep(j, t.size()) { t[j] = 'a' + D[t[j] - 'a']; }
+        S[i] = {t,s};
     }
-    cout << ans << endl;
-    return 0;
+    sort(S.begin(), S.end());
+    rep(i, N) { cout << S[i].second << endl; }
 }

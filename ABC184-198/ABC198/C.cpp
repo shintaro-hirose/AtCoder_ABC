@@ -19,18 +19,15 @@ typedef vector<vb> vvb;
 const ll mod = 1000000007;
 
 int main() {
-    int N;
-    cin >> N;
-    vi As(N), Bs(N);
-    rep(i, N) cin >> As[i] >> Bs[i];
-
-    int ans = INF;
-    rep(i, N) rep(j, N) {
-        if(i == j)
-            ans = min(ans, As[i] + Bs[j]);
-        else
-            ans = min(ans, max(As[i], Bs[j]));
-    }
+    ll R, X, Y;
+    cin >> R >> X >> Y;
+    double D = sqrt(X * X + Y * Y);
+    ll ans;
+    if(D == R)
+        ans = 1;
+    else if(D <= 2 * R)
+        ans = 2;
+    else
+        ans = ceil(D / R);
     cout << ans << endl;
-    return 0;
 }

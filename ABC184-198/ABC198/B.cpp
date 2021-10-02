@@ -19,18 +19,24 @@ typedef vector<vb> vvb;
 const ll mod = 1000000007;
 
 int main() {
-    int N;
+    string N;
     cin >> N;
-    vi As(N), Bs(N);
-    rep(i, N) cin >> As[i] >> Bs[i];
+    string T = N;
+    reverse(T.begin(), T.end());
 
-    int ans = INF;
-    rep(i, N) rep(j, N) {
-        if(i == j)
-            ans = min(ans, As[i] + Bs[j]);
-        else
-            ans = min(ans, max(As[i], Bs[j]));
+    if(N == T) {
+        cout << "Yes" << endl;
+        return 0;
     }
-    cout << ans << endl;
+    rep(i, 9) {
+        N = '0' + N;
+        T = N;
+        reverse(T.begin(), T.end());
+        if(N == T) {
+            cout << "Yes" << endl;
+            return 0;
+        }
+    }
+    cout << "No" << endl;
     return 0;
 }

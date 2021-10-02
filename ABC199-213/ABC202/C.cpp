@@ -21,15 +21,22 @@ const ll mod = 1000000007;
 int main() {
     int N;
     cin >> N;
-    vi As(N), Bs(N);
-    rep(i, N) cin >> As[i] >> Bs[i];
+    vi As(N), Bs(N), Cs(N), Ds(N);
+    rep(i, N) cin >> As[i];
+    rep(i, N) cin >> Bs[i];
+    rep(i, N) cin >> Cs[i];
 
-    int ans = INF;
-    rep(i, N) rep(j, N) {
-        if(i == j)
-            ans = min(ans, As[i] + Bs[j]);
-        else
-            ans = min(ans, max(As[i], Bs[j]));
+    rep(i, N) { Ds[i] = Bs[Cs[i] - 1]; }
+
+    vl cntA(N + 1);
+    vl cntD(N + 1);
+    rep(i, N) {
+        cntA[As[i]]++;
+        cntD[Ds[i]]++;
+    }
+    ll ans = 0;
+    for(int i = 1; i <= N; i++) {
+        ans += cntA[i] * cntD[i];
     }
     cout << ans << endl;
     return 0;

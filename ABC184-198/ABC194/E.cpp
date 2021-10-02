@@ -19,18 +19,32 @@ typedef vector<vb> vvb;
 const ll mod = 1000000007;
 
 int main() {
-    int N;
-    cin >> N;
-    vi As(N), Bs(N);
-    rep(i, N) cin >> As[i] >> Bs[i];
+    int N, M;
+    cin >> N >> M;
+    vi As(N);
+    rep(i, N) cin >> As[i];
 
-    int ans = INF;
-    rep(i, N) rep(j, N) {
-        if(i == j)
-            ans = min(ans, As[i] + Bs[j]);
-        else
-            ans = min(ans, max(As[i], Bs[j]));
+    int cnt[1501010];
+    memset(cnt, 0, sizeof(cnt));
+    rep(i, M) { cnt[As[i]]++; }
+
+    int l;
+    rep(i, M + 1) {
+        if(cnt[i] == 0) {
+            l = i;
+            break;
+        }
     }
-    cout << ans << endl;
+    rep(i, N - M) {
+        int c, d;
+        c = As[i];
+        d = As[M + i];
+        cnt[c]--;
+        cnt[d]++;
+        if(cnt[c] == 0 && c < l) {
+            l = c;
+        }
+    }
+    cout << l << endl;
     return 0;
 }

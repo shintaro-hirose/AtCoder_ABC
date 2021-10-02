@@ -12,25 +12,15 @@ typedef vector<string> vs;
 typedef vector<vs> vvs;
 typedef vector<bool> vb;
 typedef vector<vb> vvb;
-#define rep(i, n) for(int i = 0; i < (int)(n); i++)
+#define rep(i, n) for (int i = 0; i < (int)(n); i++)
 #define EPS (1e-7)
-#define INF (1e9 + 10)
+#define INF (1e9+10)
 #define PI (acos(-1))
 const ll mod = 1000000007;
 
 int main() {
-    int N;
-    cin >> N;
-    vi As(N), Bs(N);
-    rep(i, N) cin >> As[i] >> Bs[i];
-
-    int ans = INF;
-    rep(i, N) rep(j, N) {
-        if(i == j)
-            ans = min(ans, As[i] + Bs[j]);
-        else
-            ans = min(ans, max(As[i], Bs[j]));
-    }
-    cout << ans << endl;
+    int N, K;
+    cin >> N >> K;
+    cout << K * 100 * (1 + N) * N / 2 + (1 + K) * K * N / 2 << endl;
     return 0;
 }

@@ -19,18 +19,25 @@ typedef vector<vb> vvb;
 const ll mod = 1000000007;
 
 int main() {
-    int N;
-    cin >> N;
-    vi As(N), Bs(N);
-    rep(i, N) cin >> As[i] >> Bs[i];
-
-    int ans = INF;
-    rep(i, N) rep(j, N) {
-        if(i == j)
-            ans = min(ans, As[i] + Bs[j]);
-        else
-            ans = min(ans, max(As[i], Bs[j]));
+    ll N, K;
+    cin >> N >> K;
+    vector<l_l> A(N);
+    rep(i, N) {
+        ll a, b;
+        cin >> a >> b;
+        A[i] = l_l(a, b);
     }
+    sort(A.begin(), A.end());
+    ll ans = 0;
+    rep(i, N) {
+        if(A[i].first - ans <= K) {
+            K -= A[i].first - ans;
+            K += A[i].second;
+            ans = A[i].first;
+        } else
+            break;
+    }
+    ans += K;
     cout << ans << endl;
     return 0;
 }

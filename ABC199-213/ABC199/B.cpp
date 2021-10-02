@@ -22,15 +22,18 @@ int main() {
     int N;
     cin >> N;
     vi As(N), Bs(N);
-    rep(i, N) cin >> As[i] >> Bs[i];
+    rep(i, N) cin >> As[i];
+    rep(i, N) cin >> Bs[i];
 
-    int ans = INF;
-    rep(i, N) rep(j, N) {
-        if(i == j)
-            ans = min(ans, As[i] + Bs[j]);
-        else
-            ans = min(ans, max(As[i], Bs[j]));
+    int l = 1, r = 1000;
+    rep(i, N) {
+        if(r < As[i] || Bs[i] < l) {
+            cout << 0 << endl;
+            return 0;
+        }
+        l = max(l, As[i]);
+        r = min(r, Bs[i]);
     }
-    cout << ans << endl;
+    cout << r - l + 1 << endl;
     return 0;
 }

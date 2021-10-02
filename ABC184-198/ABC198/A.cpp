@@ -21,16 +21,6 @@ const ll mod = 1000000007;
 int main() {
     int N;
     cin >> N;
-    vi As(N), Bs(N);
-    rep(i, N) cin >> As[i] >> Bs[i];
-
-    int ans = INF;
-    rep(i, N) rep(j, N) {
-        if(i == j)
-            ans = min(ans, As[i] + Bs[j]);
-        else
-            ans = min(ans, max(As[i], Bs[j]));
-    }
-    cout << ans << endl;
+    cout << N - 1 << endl;
     return 0;
 }
